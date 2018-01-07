@@ -4,6 +4,9 @@ import Hidden from 'material-ui-next/Hidden'
 import DataList from './DataList'
 import DataTable from './DataTable'
 
+/**
+ * Responsive read-only table (desktop devices) <-> read-only expandable list (tablet/mobile devices) for material-ui 1.0-beta.
+ */
 export default class ResponsiveTable extends Component {
   render() {
     const {

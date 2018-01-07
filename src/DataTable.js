@@ -4,6 +4,9 @@ import {withStyles} from 'material-ui-next/styles'
 
 import NoContent from './NoContent'
 
+/**
+ * Simple read only table with header and body
+ */
 export default class DataTable extends Component {
   render() {
     const {
@@ -45,7 +48,7 @@ export default class DataTable extends Component {
                   key={`${rowIndex}-${columnIndex}`}
                   {...TableBodyCellProps}
                 >
-                  {column.render ? column.render(row[column.key]) : row[column.key]}
+                  {column.render ? column.render(row[column.key], column, row, data) : row[column.key]}
                 </TableCell>
               ))}
             </TableRow>

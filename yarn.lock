@@ -1673,9 +1673,9 @@ material-ui-icons@^1.0.0-beta.17:
   dependencies:
     recompose "^0.26.0"
 
-material-ui-next@1.0.0-beta.25:
-  version "1.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/material-ui-next/-/material-ui-next-1.0.0-beta.25.tgz#4d13f0b08d907e3aa49f26c89bbdcd648713fd8b"
+material-ui-next@1.0.0-beta.23:
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/material-ui-next/-/material-ui-next-1.0.0-beta.23.tgz#fe76ac6e5fcf85eaa574c24df1c89cbffdc179db"
   dependencies:
     babel-runtime "^6.26.0"
     brcast "^3.0.1"
@@ -1690,6 +1690,7 @@ material-ui-next@1.0.0-beta.25:
     normalize-scroll-left "^0.1.2"
     prop-types "^15.6.0"
     react-event-listener "^0.5.1"
+    react-flow-types "^0.2.0-beta.6"
     react-jss "^8.1.0"
     react-popper "^0.7.4"
     react-scrollbar-size "^2.0.2"
@@ -2018,6 +2019,10 @@ react-event-listener@^0.5.0, react-event-listener@^0.5.1:
     fbjs "^0.8.16"
     prop-types "^15.6.0"
     warning "^3.0.0"
+
+react-flow-types@^0.2.0-beta.6:
+  version "0.2.0-beta.6"
+  resolved "https://registry.yarnpkg.com/react-flow-types/-/react-flow-types-0.2.0-beta.6.tgz#bf49c8b7864fcd0951b03286c63a80d66ce9fae4"
 
 react-jss@^8.1.0:
   version "8.2.1"
