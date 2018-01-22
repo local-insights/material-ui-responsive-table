@@ -1,8 +1,11 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails} from 'material-ui-next/ExpansionPanel'
+import ExpansionPanel, {
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+} from 'material-ui-next/ExpansionPanel'
 import Typography from 'material-ui-next/Typography'
-import {withStyles} from 'material-ui-next/styles'
+import { withStyles } from 'material-ui-next/styles'
 
 const styles = {
   summaryText: {
@@ -31,8 +34,8 @@ class ExpandableListItem extends Component {
 
     return (
       <ExpansionPanel {...ExpansionPanelProps}>
-        <ExpansionPanelSummary 
-          expandIcon={<ExpandMoreIcon {...ExpansionPanelMoreIconProps}/>}
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon {...ExpansionPanelMoreIconProps} />}
           {...ExpansionPanelSummaryProps}
         >
           <Typography
@@ -40,7 +43,7 @@ class ExpandableListItem extends Component {
               root: classes.summaryText,
             }}
             gutterBottom
-            type='headline'
+            type="headline"
             {...ExpansionPanelSummaryTypographyProps}
           >
             {this.props.summary}
@@ -52,7 +55,7 @@ class ExpandableListItem extends Component {
               root: classes.detailsText,
             }}
             gutterBottom
-            type='headline'
+            type="headline"
             {...ExpansionPanelDetailsTypographyProps}
           >
             {this.props.details}

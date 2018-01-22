@@ -1,73 +1,97 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Grid from 'material-ui-next/Grid'
 
+import { CellRenderer, LabelRenderer } from './Renderer'
 import ExpandableListItem from './ExpandableListItem'
 import NoContent from './NoContent'
+import Pagination from './Pagination'
 
 /**
  * List with expandable items - mobile table analogue
  */
 export default class DataList extends Component {
+  handleChangePage = (event, page) => this.props.onChangePage(event, page)
 
-  createListItemTitle = (columns, row) => {
+  createListItemTitle = (columns, row, data) => {
     const primaryColumns = columns.filter(column => column.primary)
     return primaryColumns.length === 0
-      ? row[columns[0].key]
-      : primaryColumns.map(column => row[column.key]).join(' ')
+      ? <CellRenderer column={columns[0]} row={row} data={data} />
+      : primaryColumns
+        .map(column => (
+          <CellRenderer key={column.key} column={column} row={row} data={data} />
+        ))
+        .reduce((prev, next) => [prev, ' ', next]) // divide item headers by space
   }
 
-  createListItemDescription = (columns, row) => {
-    return (
-      <div>
-        {
-          columns.map((column, index) => (
-            <Grid key={`${column.label}-${index}`} container>
-              <Grid item xs>
-                {column.label}
-              </Grid>
-              <Grid item xs>
-                {column.render ? column.render(row[column.key]) : row[column.key]}
-              </Grid>
-            </Grid>
-          ))
-        }
-      </div>
-    )
-  }
+  createListItemDescription = (columns, row, data) => (
+    <div>
+      {columns.map((column, index) => (
+        <Grid key={`${column.label}-${index}`} container>
+          <Grid item xs>
+            <LabelRenderer column={column} data={data} />
+          </Grid>
+          <Grid item xs>
+            <CellRenderer column={column} row={row} data={data} />
+          </Grid>
+        </Grid>
+      ))}
+    </div>
+  )
 
   render() {
     const {
       columns,
+      count,
       data,
       noContentText,
+      page,
+      rowsPerPage,
+      showPagination,
       ExpansionPanelDetailsProps,
       ExpansionPanelDetailsTypographyProps,
       ExpansionPanelMoreIconProps,
       ExpansionPanelProps,
       ExpansionPanelSummaryProps,
       ExpansionPanelSummaryTypographyProps,
+      TablePaginationProps,
     } = this.props
 
-    if (!Array.isArray(data) || data.length === 0 || !Array.isArray(columns) || columns.length === 0) {
-      return <NoContent text={noContentText}/>
+    if (!Array.isArray(data)
+      || data.length === 0
+      || !Array.isArray(columns)
+      || columns.length === 0) {
+      return <NoContent text={noContentText} />
     }
 
     return (
       <div>
+        {data.map((row, index) => (
+          <ExpandableListItem
+            key={index}
+            summary={this.createListItemTitle(columns, row, data)}
+            details={this.createListItemDescription(columns, row, data)}
+            ExpansionPanelDetailsProps={ExpansionPanelDetailsProps}
+            ExpansionPanelDetailsTypographyProps={
+              ExpansionPanelDetailsTypographyProps
+            }
+            ExpansionPanelMoreIconProps={ExpansionPanelMoreIconProps}
+            ExpansionPanelProps={ExpansionPanelProps}
+            ExpansionPanelSummaryProps={ExpansionPanelSummaryProps}
+            ExpansionPanelSummaryTypographyProps={
+              ExpansionPanelSummaryTypographyProps
+            }
+          />
+        ))}
         {
-          data.map((row, index) => (
-            <ExpandableListItem
-              key={index}
-              summary={this.createListItemTitle(columns, row)}
-              details={this.createListItemDescription(columns, row)}
-              ExpansionPanelDetailsProps={ExpansionPanelDetailsProps}
-              ExpansionPanelDetailsTypographyProps={ExpansionPanelDetailsTypographyProps}
-              ExpansionPanelMoreIconProps={ExpansionPanelMoreIconProps}
-              ExpansionPanelProps={ExpansionPanelProps}
-              ExpansionPanelSummaryProps={ExpansionPanelSummaryProps}
-              ExpansionPanelSummaryTypographyProps={ExpansionPanelSummaryTypographyProps}        
-            />
-          ))
+          showPagination &&
+          <Pagination
+            component="div"
+            count={count}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            TablePaginationProps={TablePaginationProps}
+            onChangePage={this.handleChangePage}
+          />
         }
       </div>
     )

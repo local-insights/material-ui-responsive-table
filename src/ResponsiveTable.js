@@ -1,18 +1,32 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Hidden from 'material-ui-next/Hidden'
+import { withStyles } from 'material-ui-next/styles'
 
 import DataList from './DataList'
 import DataTable from './DataTable'
 
+const styles = {
+  root: {},
+}
+
 /**
  * Responsive read-only table (desktop devices) <-> read-only expandable list (tablet/mobile devices) for material-ui 1.0-beta.
  */
-export default class ResponsiveTable extends Component {
+class ResponsiveTable extends Component {
+  handleChangePage = (event, page) => this.props.onChangePage(event, page)
+
   render() {
     const {
+      classes,
       columns,
+      count,
       data,
       noContentText,
+      tableBreakpoints,
+      listBreakpoints,
+      page,
+      rowsPerPage,
+      showPagination,
       ExpansionPanelDetailsProps,
       ExpansionPanelDetailsTypographyProps,
       ExpansionPanelMoreIconProps,
@@ -25,45 +39,63 @@ export default class ResponsiveTable extends Component {
       TableHeadCellProps,
       TableHeadProps,
       TableHeadRowProps,
+      TablePaginationProps,
       TableProps,
     } = this.props
 
     return (
-      <div>
-
+      <div className={classes.root}>
         {/* DESKTOP BIG TABLE */}
 
-        <Hidden mdDown>
+        <Hidden only={tableBreakpoints || ['xs', 'sm', 'md']}>
           <DataTable
             columns={columns}
+            count={count}
             data={data}
             noContentText={noContentText}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            showPagination={showPagination}
             TableBodyCellProps={TableBodyCellProps}
             TableBodyProps={TableBodyProps}
             TableBodyRowProps={TableBodyRowProps}
             TableHeadCellProps={TableHeadCellProps}
             TableHeadProps={TableHeadProps}
             TableHeadRowProps={TableHeadRowProps}
+            TablePaginationProps={TablePaginationProps}
             TableProps={TableProps}
+            onChangePage={this.handleChangePage}
           />
         </Hidden>
 
         {/* MOBILE EXPANDABLE LIST OF CARDS */}
-  
-        <Hidden lgUp>
+
+        <Hidden only={listBreakpoints || ['lg', 'xl']}>
           <DataList
             columns={columns}
+            count={count}
             data={data}
             noContentText={noContentText}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            showPagination={showPagination}
             ExpansionPanelDetailsProps={ExpansionPanelDetailsProps}
-            ExpansionPanelDetailsTypographyProps={ExpansionPanelDetailsTypographyProps}
+            ExpansionPanelDetailsTypographyProps={
+              ExpansionPanelDetailsTypographyProps
+            }
             ExpansionPanelMoreIconProps={ExpansionPanelMoreIconProps}
             ExpansionPanelProps={ExpansionPanelProps}
             ExpansionPanelSummaryProps={ExpansionPanelSummaryProps}
-            ExpansionPanelSummaryTypographyProps={ExpansionPanelSummaryTypographyProps}
+            ExpansionPanelSummaryTypographyProps={
+              ExpansionPanelSummaryTypographyProps
+            }
+            TablePaginationProps={TablePaginationProps}
+            onChangePage={this.handleChangePage}
           />
         </Hidden>
       </div>
     )
   }
 }
+
+export default withStyles(styles)(ResponsiveTable)
