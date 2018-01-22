@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lehaSVV2009/material-ui-next-responsive-table.git"
+    "url": "git+https://github.com/local-insights/material-ui-next-responsive-table.git"
   },
   "keywords": [
     "material-ui-next",
@@ -31,9 +31,9 @@
   "author": "lehaSVV2009@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lehaSVV2009/material-ui-next-responsive-table/issues"
+    "url": "https://github.com/local-insights/material-ui-next-responsive-table/issues"
   },
-  "homepage": "https://github.com/lehaSVV2009/material-ui-next-responsive-table#readme",
+  "homepage": "https://github.com/local-insights/material-ui-next-responsive-table#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
