@@ -1,12 +1,11 @@
-import React, {Component} from 'react'
-import {withStyles} from 'material-ui-next/styles'
+import React, { Component } from 'react'
+import { withStyles } from 'material-ui-next/styles'
 
 const styles = {
   root: {
     display: 'flex',
     justifyContent: 'center',
-    paddingTop: '20px',
-    paddingBottom: '20px',  
+    padding: '20px',
   },
 }
 

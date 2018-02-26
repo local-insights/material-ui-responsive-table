@@ -23,17 +23,19 @@ export default class DataList extends Component {
         .reduce((prev, next) => [prev, ' ', next]) // divide item headers by space
   }
 
-  createListItemDescription = (columns, row, data) => (
+  createListItemDescription = (columns, row, data, excludePrimary) => (
     <div>
-      {columns.map((column, index) => (
-        <Grid key={`${column.label}-${index}`} container>
-          <Grid item xs>
-            <LabelRenderer column={column} data={data} />
+      {columns
+        .filter(column => !excludePrimary || !column.primary)
+        .map((column, index) => (
+          <Grid key={`${column.label}-${index}`} container>
+            <Grid item xs>
+              <LabelRenderer column={column} data={data} />
+            </Grid>
+            <Grid item xs>
+              <CellRenderer column={column} row={row} data={data} />
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <CellRenderer column={column} row={row} data={data} />
-          </Grid>
-        </Grid>
       ))}
     </div>
   )
@@ -43,9 +45,12 @@ export default class DataList extends Component {
       columns,
       count,
       data,
+      excludePrimaryFromDetails,
       noContentText,
       page,
       rowsPerPage,
+      scrollToSelected,
+      scrollOptions,
       showPagination,
       ExpansionPanelDetailsProps,
       ExpansionPanelDetailsTypographyProps,
@@ -53,6 +58,7 @@ export default class DataList extends Component {
       ExpansionPanelProps,
       ExpansionPanelSummaryProps,
       ExpansionPanelSummaryTypographyProps,
+      SelectedExpansionPanelProps,
       TablePaginationProps,
     } = this.props
 
@@ -69,7 +75,10 @@ export default class DataList extends Component {
           <ExpandableListItem
             key={index}
             summary={this.createListItemTitle(columns, row, data)}
-            details={this.createListItemDescription(columns, row, data)}
+            details={this.createListItemDescription(columns, row, data, excludePrimaryFromDetails)}
+            selected={row.selected}
+            scrollToSelected={scrollToSelected}
+            scrollOptions={scrollOptions}
             ExpansionPanelDetailsProps={ExpansionPanelDetailsProps}
             ExpansionPanelDetailsTypographyProps={
               ExpansionPanelDetailsTypographyProps
@@ -80,6 +89,7 @@ export default class DataList extends Component {
             ExpansionPanelSummaryTypographyProps={
               ExpansionPanelSummaryTypographyProps
             }
+            SelectedExpansionPanelProps={SelectedExpansionPanelProps}
           />
         ))}
         {

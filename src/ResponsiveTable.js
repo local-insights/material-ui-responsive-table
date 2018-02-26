@@ -21,6 +21,7 @@ class ResponsiveTable extends Component {
       columns,
       count,
       data,
+      excludePrimaryFromDetails,
       noContentText,
       tableBreakpoints,
       listBreakpoints,
@@ -75,6 +76,7 @@ class ResponsiveTable extends Component {
             columns={columns}
             count={count}
             data={data}
+            excludePrimaryFromDetails={excludePrimaryFromDetails}
             noContentText={noContentText}
             page={page}
             rowsPerPage={rowsPerPage}

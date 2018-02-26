@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import ExpansionPanel, {
   ExpansionPanelSummary,
@@ -21,19 +22,35 @@ const styles = {
  * Expandable component with header text (summary) and expandable description text (details)
  */
 class ExpandableListItem extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected && nextProps.scrollToSelected) {
+      // material-ui-next encourages ReactDOM until React find better way
+      // https://material-ui-next.com/getting-started/frequently-asked-questions/#how-can-i-access-the-dom-element-
+      ReactDOM.findDOMNode(this).scrollIntoView(nextProps.scrollOptions || { behavior: 'smooth', block: 'center' })
+    }
+  }
+
   render() {
     const {
       classes,
+      details,
+      selected,
+      summary,
       ExpansionPanelDetailsProps,
       ExpansionPanelDetailsTypographyProps,
       ExpansionPanelMoreIconProps,
       ExpansionPanelProps,
       ExpansionPanelSummaryProps,
       ExpansionPanelSummaryTypographyProps,
+      SelectedExpansionPanelProps,
     } = this.props
 
+    const rootProps = selected
+      ? { ...ExpansionPanelProps, ...SelectedExpansionPanelProps }
+      : ExpansionPanelProps
+
     return (
-      <ExpansionPanel {...ExpansionPanelProps}>
+      <ExpansionPanel {...rootProps} >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon {...ExpansionPanelMoreIconProps} />}
           {...ExpansionPanelSummaryProps}
@@ -46,7 +63,7 @@ class ExpandableListItem extends Component {
             type="headline"
             {...ExpansionPanelSummaryTypographyProps}
           >
-            {this.props.summary}
+            {summary}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails {...ExpansionPanelDetailsProps}>
@@ -58,7 +75,7 @@ class ExpandableListItem extends Component {
             type="headline"
             {...ExpansionPanelDetailsTypographyProps}
           >
-            {this.props.details}
+            {details}
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
