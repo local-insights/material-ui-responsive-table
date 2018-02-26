@@ -5,7 +5,6 @@ This project provides read-only responsive table for [Material-UI][material-ui].
 
 Table is shown for desktop screen, list of expandable items - for tablet and mobile.
 
-// TODO Add demo.gif
 ![Demo](demo.gif)
 
 ## Installation
