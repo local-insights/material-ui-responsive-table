@@ -28,6 +28,7 @@ class ResponsiveTable extends Component {
       page,
       rowsPerPage,
       showPagination,
+      implementation,
       ExpansionPanelDetailsProps,
       ExpansionPanelDetailsTypographyProps,
       ExpansionPanelMoreIconProps,
@@ -48,7 +49,7 @@ class ResponsiveTable extends Component {
       <div className={classes.root}>
         {/* DESKTOP BIG TABLE */}
 
-        <Hidden only={tableBreakpoints || ['xs', 'sm', 'md']}>
+        <Hidden only={tableBreakpoints || ['xs', 'sm', 'md']} implementation={implementation || 'js'}>
           <DataTable
             columns={columns}
             count={count}
@@ -71,7 +72,7 @@ class ResponsiveTable extends Component {
 
         {/* MOBILE EXPANDABLE LIST OF CARDS */}
 
-        <Hidden only={listBreakpoints || ['lg', 'xl']}>
+        <Hidden only={listBreakpoints || ['lg', 'xl']} implementation={implementation || 'js'}>
           <DataList
             columns={columns}
             count={count}
