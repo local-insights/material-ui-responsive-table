@@ -60,7 +60,7 @@ class ExpandableListItem extends Component {
               root: classes.summaryText,
             }}
             gutterBottom
-            variant="headline"
+            variant="title"
             {...ExpansionPanelSummaryTypographyProps}
           >
             {summary}
@@ -72,7 +72,7 @@ class ExpandableListItem extends Component {
               root: classes.detailsText,
             }}
             gutterBottom
-            variant="headline"
+            variant="title"
             {...ExpansionPanelDetailsTypographyProps}
           >
             {details}
