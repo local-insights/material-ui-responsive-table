@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import ExpansionPanel, {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-} from 'material-ui-next/ExpansionPanel'
-import Typography from 'material-ui-next/Typography'
-import { withStyles } from 'material-ui-next/styles'
+} from 'material-ui/ExpansionPanel'
+import Typography from 'material-ui/Typography'
+import { withStyles } from 'material-ui/styles'
 
 const styles = {
   summaryText: {

@@ -5,7 +5,7 @@ import Table, {
   TableFooter,
   TableHead,
   TableRow,
-} from 'material-ui-next/Table'
+} from 'material-ui/Table'
 
 import { CellRenderer, LabelRenderer } from './Renderer'
 import NoContent from './NoContent'

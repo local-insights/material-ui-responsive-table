@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withStyles } from 'material-ui-next/styles'
+import { withStyles } from 'material-ui/styles'
 
 const styles = {
   root: {
