@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Grid from 'material-ui-next/Grid'
+import Grid from '@material-ui/core/Grid'
 
 import { CellRenderer, LabelRenderer } from './Renderer'
 import ExpandableListItem from './ExpandableListItem'

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
-import ExpansionPanel, {
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-} from 'material-ui-next/ExpansionPanel'
-import Typography from 'material-ui-next/Typography'
-import { withStyles } from 'material-ui-next/styles'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   summaryText: {
@@ -24,8 +23,8 @@ const styles = {
 class ExpandableListItem extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected && nextProps.scrollToSelected) {
-      // material-ui-next encourages ReactDOM until React find better way
-      // https://material-ui-next.com/getting-started/frequently-asked-questions/#how-can-i-access-the-dom-element-
+      // @material-ui/core encourages ReactDOM until React find better way
+      // https://@material-ui/core.com/getting-started/frequently-asked-questions/#how-can-i-access-the-dom-element-
       ReactDOM.findDOMNode(this).scrollIntoView(nextProps.scrollOptions || { behavior: 'smooth', block: 'center' })
     }
   }
@@ -60,7 +59,7 @@ class ExpandableListItem extends Component {
               root: classes.summaryText,
             }}
             gutterBottom
-            variant="headline"
+            variant="title"
             {...ExpansionPanelSummaryTypographyProps}
           >
             {summary}
@@ -72,7 +71,7 @@ class ExpandableListItem extends Component {
               root: classes.detailsText,
             }}
             gutterBottom
-            variant="headline"
+            variant="title"
             {...ExpansionPanelDetailsTypographyProps}
           >
             {details}
