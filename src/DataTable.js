@@ -52,7 +52,7 @@ export default class DataTable extends Component {
                 key={`${column.label}-${index}`}
                 {...TableHeadCellProps}
               >
-                <LabelRenderer column={column} data={data} />
+                <LabelRenderer column={column} data={data} isTable={true} />
               </TableCell>
             ))}
           </TableRow>
@@ -65,7 +65,7 @@ export default class DataTable extends Component {
                   key={`${rowIndex}-${columnIndex}`}
                   {...TableBodyCellProps}
                 >
-                  <CellRenderer column={column} row={row} data={data} />
+                  <CellRenderer column={column} row={row} data={data} isTable={true} />
                 </TableCell>
               ))}
             </TableRow>

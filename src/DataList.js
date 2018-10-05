@@ -30,10 +30,10 @@ export default class DataList extends Component {
         .map((column, index) => (
           <Grid key={`${column.label}-${index}`} container>
             <Grid item xs>
-              <LabelRenderer column={column} data={data} />
+              <LabelRenderer column={column} data={data} isTable={false} />
             </Grid>
             <Grid item xs>
-              <CellRenderer column={column} row={row} data={data} />
+              <CellRenderer column={column} row={row} data={data} isTable={false} />
             </Grid>
           </Grid>
       ))}
