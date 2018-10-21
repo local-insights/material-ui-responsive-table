@@ -5,7 +5,6 @@ import {
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  ExpansionPanelDetails,
   Typography,
   withStyles
 } from '@material-ui/core';
