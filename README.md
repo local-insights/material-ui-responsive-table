@@ -58,6 +58,8 @@ const data = [
 | ----------------- | --------- | -------------- | ------------------------------------------------------ |
 | columns           | `array`   |                | Array of objects with <br/> * Required column id (`key`) - used for detecting value for body cells <br/> * Required column name (`name`) - shown in table header <br/> * Optional render function (`render: (value, column, row, data)`) - allows to customize cell value for all cells in specific column <br/> * Optional primary boolean (`primary`) - detects the column, which value has to be shown in the expandable list item summary (can be marked for 2 or more columns - in summary they are divided by ` `.|
 | data              | `array`   |                | Array of objects with keys that corresponds column id and value that should be shown in cell.|
+| tableBreakpoints  | `array`   | `['md', 'lg', 'xl']` | Override the breakpoints where the table is hidden.|
+| listBreakpoints   | `array`   | `['xs', 'sm']` | Override the breakpoints where the list is hidden.|
 | noContentText     | `string`  | `'No Content'` | Override the default text if no columns/rows presented.|
 
 ## License
