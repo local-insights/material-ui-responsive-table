@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+  Typography,
+  withStyles
+} from '@material-ui/core';
 
 const styles = {
   summaryText: {
@@ -15,7 +17,7 @@ const styles = {
     opacity: 0.5,
     width: '100%',
   },
-}
+};
 
 /**
  * Expandable component with header text (summary) and expandable description text (details)
@@ -42,11 +44,11 @@ class ExpandableListItem extends Component {
       ExpansionPanelSummaryProps,
       ExpansionPanelSummaryTypographyProps,
       SelectedExpansionPanelProps,
-    } = this.props
+    } = this.props;
 
     const rootProps = selected
       ? { ...ExpansionPanelProps, ...SelectedExpansionPanelProps }
-      : ExpansionPanelProps
+      : ExpansionPanelProps;
 
     return (
       <ExpansionPanel {...rootProps} >
@@ -59,7 +61,7 @@ class ExpandableListItem extends Component {
               root: classes.summaryText,
             }}
             gutterBottom
-            variant="subheading"
+            variant="subtitle1"
             {...ExpansionPanelSummaryTypographyProps}
           >
             {summary}
@@ -71,7 +73,7 @@ class ExpandableListItem extends Component {
               root: classes.detailsText,
             }}
             gutterBottom
-            variant="body1"
+            component="div"
             {...ExpansionPanelDetailsTypographyProps}
           >
             {details}
