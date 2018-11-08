@@ -45,6 +45,7 @@ export default class DataList extends Component {
       columns,
       count,
       data,
+      getRowClass,
       excludePrimaryFromDetails,
       noContentText,
       page,
@@ -74,6 +75,7 @@ export default class DataList extends Component {
         {data.map((row, index) => (
           <ExpandableListItem
             key={index}
+            panelClass={getRowClass(index)}
             summary={this.createListItemTitle(columns, row, data)}
             details={this.createListItemDescription(columns, row, data, excludePrimaryFromDetails)}
             selected={row.selected}
