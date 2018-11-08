@@ -13,7 +13,12 @@ const styles = {
  * Responsive read-only table (desktop devices) <-> read-only expandable list (tablet/mobile devices) for material-ui 1.0-beta.
  */
 class ResponsiveTable extends Component {
-  handleChangePage = (event, page) => this.props.onChangePage(event, page)
+  handleChangePage = (event, page) => this.props.onChangePage(event, page);
+
+  getRowClass = (index) => {
+    const {rowsClassArray} = this.props;
+    return rowsClassArray && rowsClassArray[index] ? rowsClassArray[index] : '';
+  }
 
   render() {
     const {
@@ -54,6 +59,7 @@ class ResponsiveTable extends Component {
             columns={columns}
             count={count}
             data={data}
+            getRowClass={this.getRowClass}
             noContentText={noContentText}
             page={page}
             rowsPerPage={rowsPerPage}
@@ -77,6 +83,7 @@ class ResponsiveTable extends Component {
             columns={columns}
             count={count}
             data={data}
+            getRowClass={this.getRowClass}
             excludePrimaryFromDetails={excludePrimaryFromDetails}
             noContentText={noContentText}
             page={page}

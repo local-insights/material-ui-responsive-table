@@ -13,7 +13,7 @@ import Pagination from './Pagination'
  * Simple read only table with header and body
  */
 export default class DataTable extends Component {
-  handleChangePage = (event, page) => this.props.onChangePage(event, page)
+  handleChangePage = (event, page) => this.props.onChangePage(event, page);
 
   render() {
     const {
@@ -22,7 +22,7 @@ export default class DataTable extends Component {
       data,
       noContentText,
       page,
-      rowsPerPage,
+      getRowClass,
       showPagination,
       TableBodyCellProps,
       TableBodyProps,
@@ -32,7 +32,7 @@ export default class DataTable extends Component {
       TableHeadRowProps,
       TablePaginationProps,
       TableProps,
-    } = this.props
+    } = this.props;
 
     if (
       !Array.isArray(data) ||
@@ -59,7 +59,7 @@ export default class DataTable extends Component {
         </TableHead>
         <TableBody {...TableBodyProps}>
           {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex} {...TableBodyRowProps}>
+            <TableRow key={rowIndex} className={getRowClass(rowIndex)} {...TableBodyRowProps}>
               {columns.map((column, columnIndex) => (
                 <TableCell
                   key={`${rowIndex}-${columnIndex}`}
