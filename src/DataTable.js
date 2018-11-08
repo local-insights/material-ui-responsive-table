@@ -23,6 +23,7 @@ export default class DataTable extends Component {
       noContentText,
       page,
       getRowClass,
+      rowsPerPage,
       showPagination,
       TableBodyCellProps,
       TableBodyProps,
