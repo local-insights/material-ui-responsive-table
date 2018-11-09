@@ -12,6 +12,11 @@ import Pagination from './Pagination'
 export default class DataList extends Component {
   handleChangePage = (event, page) => this.props.onChangePage(event, page)
 
+  getRowClass = (index) => {
+    const {rowsClassArray} = this.props;
+    return rowsClassArray && rowsClassArray[index] ? rowsClassArray[index] : '';
+  }
+
   createListItemTitle = (columns, row, data) => {
     const primaryColumns = columns.filter(column => column.primary)
     return primaryColumns.length === 0
@@ -45,7 +50,6 @@ export default class DataList extends Component {
       columns,
       count,
       data,
-      getRowClass,
       excludePrimaryFromDetails,
       noContentText,
       page,
@@ -62,7 +66,6 @@ export default class DataList extends Component {
       SelectedExpansionPanelProps,
       TablePaginationProps,
     } = this.props
-
     if (!Array.isArray(data)
       || data.length === 0
       || !Array.isArray(columns)
@@ -75,7 +78,7 @@ export default class DataList extends Component {
         {data.map((row, index) => (
           <ExpandableListItem
             key={index}
-            panelClass={getRowClass(index)}
+            panelClass={this.getRowClass(index)}
             summary={this.createListItemTitle(columns, row, data)}
             details={this.createListItemDescription(columns, row, data, excludePrimaryFromDetails)}
             selected={row.selected}
