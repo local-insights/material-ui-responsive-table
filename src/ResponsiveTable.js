@@ -15,17 +15,13 @@ const styles = {
 class ResponsiveTable extends Component {
   handleChangePage = (event, page) => this.props.onChangePage(event, page);
 
-  getRowClass = (index) => {
-    const {rowsClassArray} = this.props;
-    return rowsClassArray && rowsClassArray[index] ? rowsClassArray[index] : '';
-  }
-
   render() {
     const {
       classes,
       columns,
       count,
       data,
+      rowsClassArray,
       excludePrimaryFromDetails,
       noContentText,
       tableBreakpoints,
@@ -48,7 +44,7 @@ class ResponsiveTable extends Component {
       TableHeadRowProps,
       TablePaginationProps,
       TableProps,
-    } = this.props
+    } = this.props;
 
     return (
       <div className={classes.root}>
@@ -59,7 +55,7 @@ class ResponsiveTable extends Component {
             columns={columns}
             count={count}
             data={data}
-            getRowClass={this.getRowClass}
+            rowsClassArray={rowsClassArray}
             noContentText={noContentText}
             page={page}
             rowsPerPage={rowsPerPage}
@@ -83,7 +79,7 @@ class ResponsiveTable extends Component {
             columns={columns}
             count={count}
             data={data}
-            getRowClass={this.getRowClass}
+            rowsClassArray={rowsClassArray}
             excludePrimaryFromDetails={excludePrimaryFromDetails}
             noContentText={noContentText}
             page={page}

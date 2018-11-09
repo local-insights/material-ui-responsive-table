@@ -50,7 +50,7 @@ class ExpandableListItem extends Component {
       : ExpansionPanelProps;
 
     return (
-      <ExpansionPanel className={panelClass} {...rootProps} >
+      <ExpansionPanel className={panelClass && panelClass} {...rootProps} >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon {...ExpansionPanelMoreIconProps} />}
           {...ExpansionPanelSummaryProps}

@@ -15,6 +15,11 @@ import Pagination from './Pagination'
 export default class DataTable extends Component {
   handleChangePage = (event, page) => this.props.onChangePage(event, page);
 
+  getRowClass = (index) => {
+    const {rowsClassArray} = this.props;
+    return rowsClassArray && rowsClassArray[index] ? rowsClassArray[index] : '';
+  }
+
   render() {
     const {
       columns,
@@ -22,7 +27,6 @@ export default class DataTable extends Component {
       data,
       noContentText,
       page,
-      getRowClass,
       rowsPerPage,
       showPagination,
       TableBodyCellProps,
@@ -60,7 +64,7 @@ export default class DataTable extends Component {
         </TableHead>
         <TableBody {...TableBodyProps}>
           {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex} className={getRowClass(rowIndex)} {...TableBodyRowProps}>
+            <TableRow key={rowIndex} className={this.getRowClass(rowIndex)} {...TableBodyRowProps}>
               {columns.map((column, columnIndex) => (
                 <TableCell
                   key={`${rowIndex}-${columnIndex}`}
