@@ -1,6 +1,6 @@
 {
   "name": "material-ui-next-responsive-table",
-  "version": "0.4.9",
+  "version": "0.5.1",
   "description": "Responsive read-only table <-> expandable list for material-ui 1.0.",
   "main": "lib/index.js",
   "files": [
