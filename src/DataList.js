@@ -5,11 +5,20 @@ import { CellRenderer, LabelRenderer } from './Renderer'
 import ExpandableListItem from './ExpandableListItem'
 import NoContent from './NoContent'
 import Pagination from './Pagination'
+import _isEqual from 'lodash.isequal';
 
 /**
  * List with expandable items - mobile table analogue
  */
 export default class DataList extends Component {
+  shouldComponentUpdate(nextProps) {
+    const {enableShouldComponentUpdate, data} = this.props;
+    if (enableShouldComponentUpdate) {
+      return (!_isEqual(nextProps.data, data));
+    }
+    return true;
+  }
+
   handleChangePage = (event, page) => this.props.onChangePage(event, page)
 
   getRowClass = (index) => {

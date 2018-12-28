@@ -1,6 +1,6 @@
 {
   "name": "material-ui-next-responsive-table",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Responsive read-only table <-> expandable list for material-ui 1.0.",
   "main": "lib/index.js",
   "files": [
@@ -45,7 +45,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "lodash.isequal": "^4.5.0"
   },
   "peerDependencies": {
     "@material-ui/core": "^3.2.0",
