@@ -8,11 +8,19 @@ import TableRow from '@material-ui/core/TableRow'
 import { CellRenderer, LabelRenderer } from './Renderer'
 import NoContent from './NoContent'
 import Pagination from './Pagination'
-
+import _isEqual from 'lodash.isequal';
 /**
  * Simple read only table with header and body
  */
 export default class DataTable extends Component {
+  shouldComponentUpdate(nextProps) {
+    const {enableShouldComponentUpdate, data} = this.props;
+    if (enableShouldComponentUpdate) {
+      return (!_isEqual(nextProps.data, data));
+    }
+    return true;
+  }
+
   handleChangePage = (event, page) => this.props.onChangePage(event, page);
 
   getRowClass = (index) => {

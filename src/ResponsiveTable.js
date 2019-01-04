@@ -44,6 +44,7 @@ class ResponsiveTable extends Component {
       TableHeadRowProps,
       TablePaginationProps,
       TableProps,
+      enableShouldComponentUpdate,
     } = this.props;
 
     return (
@@ -52,6 +53,7 @@ class ResponsiveTable extends Component {
 
         <Hidden only={tableBreakpoints || ['xs', 'sm', 'md']} implementation={implementation || 'js'}>
           <DataTable
+            enableShouldComponentUpdate={enableShouldComponentUpdate}
             columns={columns}
             count={count}
             data={data}
@@ -76,6 +78,7 @@ class ResponsiveTable extends Component {
 
         <Hidden only={listBreakpoints || ['lg', 'xl']} implementation={implementation || 'js'}>
           <DataList
+            enableShouldComponentUpdate={enableShouldComponentUpdate}
             columns={columns}
             count={count}
             data={data}
